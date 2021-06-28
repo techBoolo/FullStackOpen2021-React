@@ -1,18 +1,23 @@
 import React from 'react';
 import './App.css';
 
-function App() {
-  console.log("Components can contain any valid javascript code");
-  const now = new Date();
-  const a = 10;
-  const b = 20;
+const Hello = () => {
+  return (
+      <div>
+        <p>Hello world</p>
+      </div>
+    )
+}
 
-  return React.createElement('div', { className: 'App' }, 
-      React.createElement('p', null, "Hello world, it is ", now.toString()),
-      React.createElement('p', null, a, ' plus ', b, ' is ',
-        React.createElement('span', {className: 'spanBlue'}, a+b)
-      )
-    ) 
+const  App = () =>  {
+
+  return (
+      <div className='App'>
+        <h1>Greeting</h1>
+        <Hello />
+        <Hello />
+      </div>
+    )
 }
 
 export default App;
