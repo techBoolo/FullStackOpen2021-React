@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 function App() {
@@ -6,12 +7,12 @@ function App() {
   const a = 10;
   const b = 20;
 
-  return (
-    <div className="App">
-      <p>Hello world, it is {now.toString()}</p>
-      <p>{a} plus {b} equals {a + b}</p>
-    </div>
-  );
+  return React.createElement('div', { className: 'App' }, 
+      React.createElement('p', null, "Hello world, it is ", now.toString()),
+      React.createElement('p', null, a, ' plus ', b, ' is ',
+        React.createElement('span', {className: 'spanBlue'}, a+b)
+      )
+    ) 
 }
 
 export default App;
