@@ -1,12 +1,14 @@
 import './App.css';
 
 function App() {
-  const course = 'Half stack application development'
-  const parts = [
-    { name: 'Fundamental of React', exercises: 10 },
-    { name:  'using proops to pass data', exercises:  7 },
-    { name:  'state of a component', exercises: 14 }
-  ]
+  const course = {
+    name: 'Half stack application development',
+    parts: [
+      { name: 'Fundamental of React', exercises: 10 },
+      { name:  'using proops to pass data', exercises:  7 },
+      { name:  'state of a component', exercises: 14 }
+    ]
+  }
 
   const Header = (props) => {
     return  <h1>{ props.course }</h1>
@@ -31,9 +33,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   );
 }
