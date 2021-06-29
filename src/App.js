@@ -14,15 +14,19 @@ function App() {
   const Content = (props) => {
     return (
         <div>
-          <p>{ props.parts[0].name } { props.parts[0].exercises }</p>      
-          <p>{ props.parts[1].name } { props.parts[1].exercises }</p>      
-          <p>{ props.parts[2].name } { props.parts[2].exercises }</p>      
+          <Part part={props.parts[0]} />
+          <Part part={props.parts[1]} />
+          <Part part={props.parts[2]} />
         </div>
         ) 
   }
   const Total = (props) => {
     const { parts } = props
     return <p>Number of exercises { parts[0].exercises + parts[1].exercises + parts[2].exercises}</p>
+  }
+  const Part = (props) => {
+    const { part } = props
+    return <p>{ part.name } { part.exercise }</p>
   }
 
   return (
