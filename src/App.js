@@ -4,13 +4,20 @@ import './App.css';
 const  App = () =>  {
   const [ counter, setCounter ] = useState(0)
 
-  setTimeout(() => setCounter(counter + 1), 1000)
-
-  console.log('rendering...', counter);
+  const handleIncClick = () => {
+    setCounter(counter + 1);
+  }
+  const handleDecClick = () => {
+    setCounter(prevCounter => prevCounter - 1)
+  }
 
   return (
       <div className='App'>
         { counter }
+        <br />
+        <button onClick={handleDecClick}>Dec</button>
+        <button onClick={() => setCounter(0)}>Reset</button>
+        <button onClick={handleIncClick}>Inc</button>
       </div>
     )
 }
