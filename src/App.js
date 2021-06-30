@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Display from './components/Display';
+import Button from './components/Button';
+
 import './App.css';
 
 const  App = () =>  {
@@ -13,11 +16,13 @@ const  App = () =>  {
 
   return (
       <div className='App'>
-        { counter }
-        <br />
-        <button onClick={handleDecClick}>Dec</button>
-        <button onClick={() => setCounter(0)}>Reset</button>
-        <button onClick={handleIncClick}>Inc</button>
+        <Display counter={counter} />
+        <Button 
+          handleClick={handleDecClick} 
+          text='Dec' 
+        />
+        <Button handleClick={() => setCounter(0)} text='Reset' />
+        <Button handleClick={handleIncClick} text='Inc' />
       </div>
     )
 }
