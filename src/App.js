@@ -6,12 +6,15 @@ import './App.css';
 
 const  App = () =>  {
   const [ clicks, setClicks ] = useState({ left: 0, right: 0 })
+    const [ allClicks, setAll ] = useState([]);
 
   const handleLeftClick = () => {
     setClicks({...clicks, left: clicks.left + 1 });
+    setAll([...allClicks, 'L'])
   }
   const handleRightClick = () => {
     setClicks(prevRight => ({ ...clicks, right: prevRight.right + 1}))
+    setAll([...allClicks, 'R'])
   }
 
   return (
@@ -23,6 +26,9 @@ const  App = () =>  {
         />
         <Button handleClick={handleRightClick} text='Right' />
         <Display counter={clicks.right} />
+        <div>
+          <Display counter={allClicks.join(', ')} />
+        </div>
       </div>
     )
 }
