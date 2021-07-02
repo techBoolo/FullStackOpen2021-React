@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Display from './components/Display';
 import Button from './components/Button';
+import History from './components/History';
 
 import './App.css';
 
@@ -27,7 +28,7 @@ const  App = () =>  {
         <Button handleClick={handleRightClick} text='Right' />
         <Display counter={clicks.right} />
         <div>
-          <Display counter={allClicks.join(', ')} />
+          <History allClicks={allClicks} />
         </div>
       </div>
     )
