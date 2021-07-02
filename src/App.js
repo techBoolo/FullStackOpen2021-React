@@ -19,10 +19,7 @@ const  App = () =>  {
     setAll([...allClicks, 'R'])
   }
 
-  const hello = (who) => () => console.log("hello", who);
-  const bye = () => {
-    return () => console.log("bye")
-  }
+  const setToValue = (newValue) => () => setValue(newValue)
 
   return (
       <div className='App'>
@@ -38,10 +35,9 @@ const  App = () =>  {
         </div>
         <div>
           { value }
-          <Button handleClick={hello('World')} text='world' />
-          <Button handleClick={hello('React')} text='react' />
-          <Button handleClick={hello('function')} text='function' />
-          <Button handleClick={bye()} text='bye' />
+          <Button handleClick={setToValue(1000)} text='Thousand' />
+          <Button handleClick={setToValue(0)} text='Reset' />
+          <Button handleClick={setToValue(value + 1)} text='Inc' />
         </div>
       </div>
     )
