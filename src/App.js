@@ -6,8 +6,9 @@ import History from './components/History';
 import './App.css';
 
 const  App = () =>  {
-  const [ clicks, setClicks ] = useState({ left: 0, right: 0 })
-    const [ allClicks, setAll ] = useState([]);
+  const [ clicks, setClicks ] = useState({ left: 0, right: 0 });
+  const [ allClicks, setAll ] = useState([]);
+  const [value, setValue ] = useState(0);
 
   const handleLeftClick = () => {
     setClicks({...clicks, left: clicks.left + 1 });
@@ -16,6 +17,11 @@ const  App = () =>  {
   const handleRightClick = () => {
     setClicks(prevRight => ({ ...clicks, right: prevRight.right + 1}))
     setAll([...allClicks, 'R'])
+  }
+
+  const hello = () => () => console.log("hello");
+  const bye = () => {
+    return () => console.log("bye")
   }
 
   return (
@@ -29,6 +35,11 @@ const  App = () =>  {
         <Display counter={clicks.right} />
         <div>
           <History allClicks={allClicks} />
+        </div>
+        <div>
+          { value }
+          <Button handleClick={hello()} text='hello' />
+          <Button handleClick={bye()} text='bye' />
         </div>
       </div>
     )
