@@ -1,10 +1,3 @@
-const Display = (props) => {
-
-  return (
-    <>
-      { props.counter }      
-    </>
-  );
-};
+const Display = ({ value }) => <> { value } </> 
 
 export default Display;

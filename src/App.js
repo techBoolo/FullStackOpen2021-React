@@ -23,13 +23,13 @@ const  App = () =>  {
 
   return (
       <div className='App'>
-        <Display counter={clicks.left} />
+        <Display value={clicks.left} />
         <Button 
           handleClick={handleLeftClick} 
           text='Left' 
         />
         <Button handleClick={handleRightClick} text='Right' />
-        <Display counter={clicks.right} />
+        <Display value={clicks.right} />
         <div>
           <History allClicks={allClicks} />
         </div>
