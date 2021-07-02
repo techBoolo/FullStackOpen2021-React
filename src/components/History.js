@@ -1,3 +1,5 @@
+import Display from './Display';
+
 const History = ({ allClicks }) => {
   if(allClicks.length === 0){
     return (
@@ -6,7 +8,7 @@ const History = ({ allClicks }) => {
   }
   return (
     <div>
-      button press History: { allClicks.join(', ') }       
+      button press History: <Display value={ allClicks.join(', ') } />       
     </div>
   );
 };
