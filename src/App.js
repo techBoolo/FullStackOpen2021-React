@@ -19,7 +19,7 @@ const  App = () =>  {
     setAll([...allClicks, 'R'])
   }
 
-  const hello = () => () => console.log("hello");
+  const hello = (who) => () => console.log("hello", who);
   const bye = () => {
     return () => console.log("bye")
   }
@@ -38,7 +38,9 @@ const  App = () =>  {
         </div>
         <div>
           { value }
-          <Button handleClick={hello()} text='hello' />
+          <Button handleClick={hello('World')} text='world' />
+          <Button handleClick={hello('React')} text='react' />
+          <Button handleClick={hello('function')} text='function' />
           <Button handleClick={bye()} text='bye' />
         </div>
       </div>
