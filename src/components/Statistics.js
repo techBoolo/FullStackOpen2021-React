@@ -1,5 +1,7 @@
 const Statistics = ({ stat }) => {
   const { good, bad, neutral, total } = stat;
+  if(total === 0) 
+    return <p>no feedback yet</p>
   return (
     <>
       <p>good {good}</p>
