@@ -1,9 +1,10 @@
 const Statistic = ({ text, value, percent }) => {
 
   return (
-    <p>
-      {text}: { value } { percent ? '%' : ''}
-    </p>
+    <tr>
+      <td>{text}</td> 
+      <td>{ value } { percent ? '%' : ''}</td>
+    </tr>
   );
 };
 export default Statistic;
