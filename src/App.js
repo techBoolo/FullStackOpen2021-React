@@ -1,4 +1,5 @@
 import React from 'react';
+import Note from './components/Note';
 
 import './App.css';
 
@@ -29,7 +30,7 @@ const  App = () =>  {
       <div className='App'>
         <h4>Notes</h4>
         <ul>
-          { notes.map(note =>  <li key={note.id}>{ note.content }</li>) }
+          { notes.map(note =>  <Note key={note.id} note={note} />) }
         </ul>
       </div>
     )
