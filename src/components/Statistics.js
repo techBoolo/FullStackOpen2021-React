@@ -1,19 +1,20 @@
+import Statistic from './Statistic';
 const Statistics = ({ stat }) => {
   const { good, bad, neutral, total } = stat;
   if(total === 0) 
     return <p>no feedback yet</p>
   return (
     <>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>Total feedback {total}</p>
+      <Statistic text='good' value={good} />
+      <Statistic text='neutral' value={neutral} />
+      <Statistic text='bad' value={bad} />
+      <Statistic text='Total' value={total} />
       <h4>Average</h4>
-      <p>good: {good / total}</p>
-      <p>neutral: {neutral / total}</p>
-      <p>bad: {-bad / total}</p>
-      <p>Positive feedback {(good / total) * 100}%</p>
-    </>
+      <Statistic text='good' value={ good / total } />
+      <Statistic text='neutral' value={ neutral / total } />
+      <Statistic text='bad' value={ bad / total } />
+      <Statistic text='Positive feedback' value={(good / total) * 100} percent='%' />
+      </>
   );
 };
 
