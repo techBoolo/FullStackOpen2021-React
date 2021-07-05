@@ -27,6 +27,7 @@ const notesData = [
 const  App = () =>  {
   const [ notes, setNotes ] = useState(notesData);
   const [ content, setContent ] = useState('');
+  const [ showAll, setShowAll ] = useState(false);
 
   const generateId = (notes) => {
     const maxId = Math.max(...notes.map(note => note.id));
@@ -43,12 +44,15 @@ const  App = () =>  {
     }
     setNotes([...notes, newNote]);
     setContent('');
-    console.log(newNote);
   }
 
   const handleContentChange = (ev) => {
     setContent(ev.target.value);
   }
+
+  const notesToShow = showAll
+    ? notes
+    : notes.filter(note => note.important)
 
   return (
       <div className='App'>
@@ -57,8 +61,9 @@ const  App = () =>  {
           <button type='submit'>add</button>
         </form>
         <h4>Notes</h4>
+        <input type='checkbox' onChange={(ev) => setShowAll(ev.target.checked) } /><span>show All</span>
         <ul>
-          { notes.map(note =>  <Note key={note.id} note={note} />) }
+          { notesToShow.map(note =>  <Note key={note.id} note={note} />) }
         </ul>
       </div>
     )
