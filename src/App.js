@@ -12,12 +12,20 @@ function App() {
     'programming without an extremely heavy use of console.log'
   ]
   const anecdotesLength = anecdotes.length;
+
+  // array of length anecdotes.length
   const arr = [...Array(anecdotesLength).keys()];
   const initVotes = {};
+  // initialize the votes object with values 0
   arr.map(k => initVotes[k] = 0)
   
+
   const [ selected, setSelected] = useState(0);
   const [ votes, setVotes] = useState(initVotes);
+
+  // find the max vote and determine its key from the object
+  const maxVote = Math.max(...Object.values(votes))
+  const maxVoteKey = Object.entries(votes).find(a => a[1] === maxVote)[0]
 
   const selectAnecdote = () => {
     const num = Math.trunc(Math.random() * anecdotesLength);
@@ -29,10 +37,14 @@ function App() {
   }
   return (
     <div className="App">
+      <h4>Anecdote of the day</h4>
       <p>{anecdotes[selected]}</p>
       <p>has {votes[selected]} votes</p>
       <button onClick={handleVote}>vote</button>
       <button onClick={selectAnecdote}>next</button>
+      <h4>Anecdote with most votes</h4>
+      <p>{ anecdotes[maxVoteKey]}</p>
+      <p>has {maxVote} votes</p>
     </div>
   );
 }
