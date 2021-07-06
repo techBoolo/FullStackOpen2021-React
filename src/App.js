@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import People from './components/People';
 import './App.css';
+const url = 'http://localhost:3001/people';
 
 function App() {
-  const [ people, setPeople ] = useState([ 
-      { name: "Arto Hellas", number: '040-123456' },
-      { name: "ada Lovelace", number: "39-44-5323523" },
-      { name: "Dan Abramov", number: "12-34-5678" },
-      { name: "Mary Poppend", number: "39-23-64356" }
-  ])
+  const [ people, setPeople ] = useState([])
   const [ name, setName ] = useState('');
   const [ number, setNumber ] = useState('');
   const [ searchTerm, setSearchTerm ] = useState('');
@@ -44,6 +41,13 @@ function App() {
   useEffect(() => {
     setFilteredPeople(people.filter(person => processName(person.name).toLowerCase().includes(processName(searchTerm).toLowerCase()))) 
   }, [searchTerm, people])
+
+  useEffect(() => {
+    axios.get(url)
+      .then(response => {
+        setPeople(response.data); 
+      })
+  }, [])
 
   return (
     <div className="App">
