@@ -14,6 +14,12 @@ function App() {
     height: '100px',
   }
 
+  const btnStyles = {
+    border: 'none',
+    textDecoration: 'underline',
+    cursor: 'pointer'
+  }
+  
   useEffect(() => {
     axios.get(url)
       .then(response => {
@@ -62,7 +68,13 @@ function App() {
             Search country/ies <input value={searchTerm} onChange={(ev) => setSearchTerm(ev.target.value)}/>
             <ul>
               {
-                filteredCountries.map(country => <li key={country.name}>{ country.name }</li>) 
+                filteredCountries.map(country => 
+                    <li key={country.name}>{ country.name } 
+                    <button style={btnStyles} onClick={() => {
+                      setSearchTerm(country.name);
+                    }
+                    }>detail</button>
+                    </li>) 
               } 
             </ul>
           </div>
