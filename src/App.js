@@ -1,33 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
+import axios from 'axios';
 
 import './App.css';
 
-const notesData = [
-  {
-    id: 1,
-    content: "Html",
-    date: new Date(),
-    important: true
-  },
-  {
-    id: 2,
-    content: "Browser",
-    date: new Date(),
-    important: false
-  },
-  {
-    id: 3,
-    content: "GET and POST",
-    date: new Date(),
-    important: true
-  }
-]
+const url = 'http://localhost:3001/notesData';
+
 
 const  App = () =>  {
-  const [ notes, setNotes ] = useState(notesData);
+  const [ notes, setNotes ] = useState([]);
   const [ content, setContent ] = useState('');
   const [ showAll, setShowAll ] = useState(false);
+
+  useEffect(() => {
+    axios.get(url)
+      .then(response => {
+        setNotes(response.data)
+      })
+  }, [])
 
   const generateId = (notes) => {
     const maxId = Math.max(...notes.map(note => note.id));
