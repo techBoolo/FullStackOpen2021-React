@@ -69,7 +69,7 @@ function App() {
           handleNameChange={handleNameChange} 
           handleNumberChange={handleNumberChange} />
       <h4>Nu</h4>
-        <People people={filteredPeople} />
+        <People people={filteredPeople} setPeople={setPeople} />
     </div>
   );
 }

@@ -15,3 +15,10 @@ export const create = (newPerson) => {
       return response.data
     })
 }
+
+export const remove = (id) => {
+  return axios.delete(`${url}/${id}`)
+    .then(response => {
+      return response.data
+    })
+}
