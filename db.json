@@ -1,8 +1,24 @@
-{ 
+{
   "people": [
-    { "name": "Arto Hellas",  "number": "040-123456" },
-    { "name": "ada Lovelace", "number": "39-44-5323523" },
-    { "name": "Dan Abramov",  "number": "12-34-5678" },
-    { "name": "Mary Poppend", "number": "39-23-64356" }
+    {
+      "id": 1,
+      "name": "Arto Hellas",
+      "number": "040-123456"
+    },
+    {
+      "id": 2,
+      "name": "ada Lovelace",
+      "number": "39-44-5323523"
+    },
+    {
+      "id": 3,
+      "name": "Dan Abramov",
+      "number": "12-34-5678"
+    },
+    {
+      "id": 4,
+      "name": "Mary Poppend",
+      "number": "39-23-64356"
+    }
   ]
 }

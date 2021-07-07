@@ -4,7 +4,7 @@ import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import People from './components/People';
 import './App.css';
-const url = 'http://localhost:3001/people';
+const url = 'http://localhost:3002/people';
 
 function App() {
   const [ people, setPeople ] = useState([])
@@ -22,9 +22,17 @@ function App() {
       alert(`${name} is already added to phonebook`)
       setName('');
     }else{ 
-      setPeople([...people, { name: processName(name), number }])
-      setName('');
-      setNumber('');
+      const newPerson = {
+        name: processName(name),
+        number
+      }
+      axios
+        .post(url, newPerson)
+        .then(response => {
+          setPeople([...people, response.data])
+          setName('');
+          setNumber('');
+        })
     }
   }
   const handleNameChange = (ev) => {
@@ -51,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <h4>Phonebook</h4>
+      <h4>Pb</h4>
         <Filter searchTerm={searchTerm} searchPeople={searchPeople} />
       <h4>Add new</h4>
         <PersonForm 
@@ -60,7 +68,7 @@ function App() {
           number={number} 
           handleNameChange={handleNameChange} 
           handleNumberChange={handleNumberChange} />
-      <h4>Numbers</h4>
+      <h4>Nu</h4>
         <People people={filteredPeople} />
     </div>
   );
