@@ -4,7 +4,7 @@ const Note = ({ note, handleImportance }) => {
     : 'make important' 
   return (
     <>
-      <li>
+      <li className='note'>
       { note.content }
       <button onClick={handleImportance}>{label}</button>
       </li> 
