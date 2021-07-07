@@ -17,9 +17,21 @@ function App() {
   }
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    if(people.find(person => processName(person.name).toLowerCase() === processName(name).toLowerCase())){
-      alert(`${name} is already added to phonebook`)
-      setName('');
+    let person = people.find(person => processName(person.name).toLowerCase() === processName(name).toLowerCase());
+    if(person){
+      const confirmation = window.confirm(`${name} is already added to phonebook want to change the number?`)
+      if(confirmation) {
+        person = {...person, number: number }
+        peopleService
+          .update(person)
+          .then(updatedPerson => {
+            setPeople(people.map(p => p.id !== updatedPerson.id ? p : updatedPerson))               
+          })
+        setName('');
+        setNumber('');
+      }else {
+        return
+      }
     }else{ 
       const newPerson = {
         name: processName(name),

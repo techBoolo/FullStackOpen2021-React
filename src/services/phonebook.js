@@ -22,3 +22,11 @@ export const remove = (id) => {
       return response.data
     })
 }
+
+export const update = (person) => {
+  const id = person.id
+  return axios.put(`${url}/${id}`, person)
+    .then(response => {
+      return response.data
+    })
+}
