@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
-import axios from 'axios';
-
+import noteService from './services/notes';
 import './App.css';
-
-const url = 'http://localhost:3001/notesData';
-
 
 const  App = () =>  {
   const [ notes, setNotes ] = useState([]);
@@ -13,7 +9,8 @@ const  App = () =>  {
   const [ showAll, setShowAll ] = useState(false);
 
   useEffect(() => {
-    axios.get(url)
+    noteService 
+      .getAll()
       .then(response => {
         setNotes(response.data)
       })
@@ -26,8 +23,8 @@ const  App = () =>  {
       date: new Date().toISOString(),
       important: Math.random() > 0.5,
     }
-    axios
-      .post(url, newNote)
+    noteService
+      .create(newNote)
       .then(response => {
         setNotes([...notes, response.data]);
         setContent('');
@@ -45,8 +42,8 @@ const  App = () =>  {
     const handleImportanceOf = (id) => {
       const note = notes.find(note => note.id === id);
       const changedNote = {...note, important: !note.important }
-      axios
-        .put(`${url}/${id}`, changedNote)
+      noteService
+        .update(id, changedNote)
         .then(response => {
           setNotes(notes.map(note => note.id !== id ? note : response.data))
         })
