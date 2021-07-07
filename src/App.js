@@ -19,21 +19,19 @@ const  App = () =>  {
       })
   }, [])
 
-  const generateId = (notes) => {
-    const maxId = Math.max(...notes.map(note => note.id));
-    return maxId + 1;
-  }
-
   const addNote = (ev) => {
     ev.preventDefault();
     const newNote = {
       content,
-      id: generateId(notes),
       date: new Date().toISOString(),
       important: Math.random() > 0.5,
     }
-    setNotes([...notes, newNote]);
-    setContent('');
+    axios
+      .post(url, newNote)
+      .then(response => {
+        setNotes([...notes, response.data]);
+        setContent('');
+      })
   }
 
   const handleContentChange = (ev) => {

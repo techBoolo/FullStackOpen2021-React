@@ -1,0 +1,9 @@
+http://localhost:3001/notesData
+
+POST 
+{
+  "content": "another note",
+  "date": "2020-01-01",
+  "important": false
+}
+

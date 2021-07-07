@@ -1,0 +1,5 @@
+const generateId = (notes) => {
+  const maxId = Math.max(...notes.map(note => note.id));
+  return maxId + 1;
+}
+
