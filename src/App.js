@@ -42,6 +42,16 @@ const  App = () =>  {
     ? notes
     : notes.filter(note => note.important)
 
+    const handleImportanceOf = (id) => {
+      const note = notes.find(note => note.id === id);
+      const changedNote = {...note, important: !note.important }
+      axios
+        .put(`${url}/${id}`, changedNote)
+        .then(response => {
+          setNotes(notes.map(note => note.id !== id ? note : response.data))
+        })
+    }
+
   return (
       <div className='App'>
         <form onSubmit={addNote}>
@@ -51,7 +61,7 @@ const  App = () =>  {
         <h4>Notes</h4>
         <input type='checkbox' onChange={(ev) => setShowAll(ev.target.checked) } /><span>show All</span>
         <ul>
-          { notesToShow.map(note =>  <Note key={note.id} note={note} />) }
+          { notesToShow.map(note =>  <Note key={note.id} note={note} handleImportance={() => handleImportanceOf(note.id) } />) }
         </ul>
       </div>
     )
