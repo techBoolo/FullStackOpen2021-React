@@ -3,6 +3,7 @@ import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import People from './components/People';
 import * as peopleService from './services/phonebook'
+import Notification from './components/Notification';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [ number, setNumber ] = useState('');
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ filteredPeople, setFilteredPeople ] = useState([]);
+  const [ message, setMessage ] = useState({});
 
   const processName = (name) => {
     return name.split(/\s+/).join(' ').trim();
@@ -27,6 +29,8 @@ function App() {
           .then(updatedPerson => {
             setPeople(people.map(p => p.id !== updatedPerson.id ? p : updatedPerson))               
           })
+        setMessage({ message: 'phonebook updated.', messageType: 'success' })
+        setTimeout(() => { setMessage({})}, 4000)
         setName('');
         setNumber('');
       }else {
@@ -41,6 +45,8 @@ function App() {
         .create(newPerson)
         .then(createdPerson => {
           setPeople([...people, createdPerson])
+          setMessage({ message: 'new person added.', messageType: 'success' })
+          setTimeout(() => { setMessage({})}, 4000)
           setName('');
           setNumber('');
         })
@@ -71,6 +77,7 @@ function App() {
 
   return (
     <div className="App">
+      <Notification message={message} />
       <h4>Pb</h4>
         <Filter searchTerm={searchTerm} searchPeople={searchPeople} />
       <h4>Add new</h4>
