@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
 import Notification from './components/Notification';
+import Footer from './components/Footer';
 import noteService from './services/notes';
 import './App.css';
 
@@ -70,6 +71,7 @@ const  App = () =>  {
         <ul>
           { notesToShow.map(note =>  <Note key={note.id} note={note} handleImportance={() => handleImportanceOf(note.id) } />) }
         </ul>
+        <Footer />
       </div>
     )
 }
