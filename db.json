@@ -10,13 +10,13 @@
       "id": 2,
       "content": "Browser",
       "date": "2019-05-30T17:30:31:098Z",
-      "important": true
+      "important": false
     },
     {
       "id": 3,
       "content": "GET and POST",
       "date": "2019-05-30T17:30:31:098Z",
-      "important": false
+      "important": true
     },
     {
       "content": "first",
@@ -33,7 +33,7 @@
     {
       "content": "the last",
       "date": "2021-07-07T08:21:48.202Z",
-      "important": true,
+      "important": false,
       "id": 6
     },
     {
@@ -51,7 +51,7 @@
     {
       "content": "yet another note",
       "date": "2021-07-07T08:58:23.472Z",
-      "important": true,
+      "important": false,
       "id": 9
     }
   ]
