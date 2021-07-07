@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import People from './components/People';
+import * as peopleService from './services/phonebook'
 import './App.css';
-const url = 'http://localhost:3002/people';
 
 function App() {
   const [ people, setPeople ] = useState([])
@@ -26,10 +25,10 @@ function App() {
         name: processName(name),
         number
       }
-      axios
-        .post(url, newPerson)
-        .then(response => {
-          setPeople([...people, response.data])
+      peopleService
+        .create(newPerson)
+        .then(createdPerson => {
+          setPeople([...people, createdPerson])
           setName('');
           setNumber('');
         })
@@ -51,9 +50,10 @@ function App() {
   }, [searchTerm, people])
 
   useEffect(() => {
-    axios.get(url)
-      .then(response => {
-        setPeople(response.data); 
+    peopleService
+      .getAll()
+      .then(initialPeople => {
+        setPeople(initialPeople); 
       })
   }, [])
 
