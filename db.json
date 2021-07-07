@@ -21,38 +21,8 @@
     {
       "content": "first",
       "date": "2021-07-07T08:21:40.271Z",
-      "important": false,
+      "important": true,
       "id": 4
-    },
-    {
-      "content": "chagn eot",
-      "date": "2021-07-07T08:21:46.141Z",
-      "important": true,
-      "id": 5
-    },
-    {
-      "content": "the last",
-      "date": "2021-07-07T08:21:48.202Z",
-      "important": false,
-      "id": 6
-    },
-    {
-      "content": "result",
-      "date": "2021-07-07T08:21:50.600Z",
-      "important": true,
-      "id": 7
-    },
-    {
-      "content": "more notes",
-      "date": "2021-07-07T08:58:11.115Z",
-      "important": false,
-      "id": 8
-    },
-    {
-      "content": "yet another note",
-      "date": "2021-07-07T08:58:23.472Z",
-      "important": false,
-      "id": 9
     }
   ]
 }

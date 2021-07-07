@@ -12,7 +12,7 @@
 /build
 
 # misc
-./db.json
+db.json
 .env
 .DS_Store
 .env.local

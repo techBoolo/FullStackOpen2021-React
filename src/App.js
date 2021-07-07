@@ -47,6 +47,10 @@ const  App = () =>  {
         .then(updatedNote => {
           setNotes(notes.map(note => note.id !== id ? note : updatedNote))
         })
+        .catch(error => {
+          console.log(error.message);
+          setNotes(notes.filter(note => note.id !== id)) 
+        });
     }
 
   return (
